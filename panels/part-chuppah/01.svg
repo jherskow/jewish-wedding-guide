@@ -1,0 +1,12 @@
+<!-- Hand-written, not traced: a chuppah whose canopy is a tallit (stripes, fringes). -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 82">
+<g fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M24,9 V66 M76,9 V66"/>
+  <path d="M8,16 Q50,27 92,16 L76,10 Q50,16 24,10 Z" fill="#fff"/>
+  <path d="M18.1,18.1 L30.2,11.3 M24.8,19.2 L34.4,11.9 M81.9,18.1 L69.8,11.3 M75.2,19.2 L65.6,11.9" stroke-width="2.6"/>
+  <path d="M11,17 V25 M13.5,17.6 V25.6 M16,18 V26 M89,17 V25 M86.5,17.6 V25.6 M84,18 V26" stroke-width="1.2"/>
+  <path d="M8,15 V80 M92,15 V80"/>
+  <circle cx="8" cy="13" r="2.2" fill="#fff"/><circle cx="92" cy="13" r="2.2" fill="#fff"/>
+  <circle cx="24" cy="8" r="1.8" fill="#fff"/><circle cx="76" cy="8" r="1.8" fill="#fff"/>
+</g>
+</svg>

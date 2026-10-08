@@ -1,0 +1,72 @@
+/* The whole look lives here. Black and white only. */
+body { margin: 0; background: #fff; color: #111; font: 16px/1.45 Verdana, sans-serif; }
+main { max-width: 480px; margin: auto; }
+
+header { padding: 32px 16px 24px; border-bottom: 4px solid #111; }
+h1 { margin: 0; font-size: 34px; line-height: 1.1; }
+header p { margin: 4px 0 0; }
+/* the translations under the names: Futura italic (Josh, 2026-10-08) */
+header em, section > em { display: block; font: italic 19px/1.3 Futura, Jost, sans-serif; }
+header .number { margin-top: 12px; font-weight: bold; }
+
+section { padding: 24px 0; border-bottom: 2px solid #111; counter-reset: step; }
+h2 { margin: 0 16px 2px; font-size: 28px; line-height: 1.1; display: flex; justify-content: space-between; align-items: baseline; }
+h2 time { font-size: 18px; }
+section > em { margin: 0 16px 8px; }
+/* the small text: panel subtitles and the stage's own sentences, no wider than the frame. Futura upright (Josh, 2026-10-08) */
+figcaption, section p { font: 16px/1.4 Futura, Jost, sans-serif; }
+section p { margin: 12px 32px 0; }
+
+/* one panel; numbered only when the stage has more than one */
+figure { margin: 0; position: relative; counter-increment: step; }
+figure + figure { border-top: 2px solid #111; }
+figure img { display: block; width: 100%; aspect-ratio: 390 / 270; object-fit: contain; padding: 40px 44px 48px; box-sizing: border-box; }
+.art { position: relative; }
+section:has(figure + figure) .art::before { content: counter(step); position: absolute; left: 12px; top: 4px; z-index: 1; padding: 0 8px; background: #fff; font: bold 40px Verdana, sans-serif; }
+
+/* panel extras: optional title, subtitle, hourglass and repeat arrow (see the note at the top of index.html) */
+figure h3 { margin: 12px 16px 0; font-size: 18px; }
+figcaption { margin: 0 32px 12px; }
+.hourglass, .repeat, .bubble { font: bold 18px Verdana, sans-serif; background: #fff no-repeat; position: relative; }
+.hourglass { min-height: 40px; padding-left: 32px; display: flex; align-items: center; background-size: 28px 40px;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 40" fill="none" stroke="%23111" stroke-width="3" stroke-linejoin="round"><path d="M3 2h22M3 38h22M6 2c0 11 8 12 8 18c0-6 8-7 8-18M6 38c0-11 8-12 8-18c0 6 8 7 8 18"/><path fill="%23111" stroke="none" d="M9 36c1-6 5-7 5-10c0 3 4 4 5 10z"/></svg>'); }
+.repeat { width: 56px; height: 56px; display: grid; place-items: center; background-size: contain;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56"><path d="M28 6a22 22 0 1 1-22 22" fill="none" stroke="%23111" stroke-width="5"/><path fill="%23111" d="M-4 30l10-14 10 14z"/></svg>'); }
+.bubble { min-width: 96px; min-height: 30px; padding: 6px 12px; display: grid; place-items: center; border: 3px solid #111; border-radius: 18px; }
+.bubble::after { content: ''; position: absolute; left: 22px; bottom: -11px; width: 14px; height: 14px; background: #fff; border: solid #111; border-width: 0 3px 3px 0; transform: skewX(25deg) rotate(45deg); }
+.cross { width: 40px; height: 40px; background: no-repeat center / 100% 100%;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M4 4L96 96M96 4L4 96" stroke="%23111" stroke-width="7" vector-effect="non-scaling-stroke"/></svg>'); }
+.art i { position: absolute; z-index: 1; }
+.art .cross { inset: 12px; width: auto; height: auto; }
+.art .hourglass { left: 44px; bottom: 8px; border: solid #fff; border-width: 0 6px; }
+.art .repeat { right: 44px; bottom: 0; border: solid #fff; border-width: 0 6px; }
+.art .bubble { right: 16px; top: 8px; }
+/* every drawing sits in a frame; the icons and the step number sit on its line and break it */
+.art::after { content: ''; position: absolute; inset: 28px 32px; border: 3px solid #111; pointer-events: none; }
+
+/* the cover: a boxed parts list, then the do-nots side by side */
+.parts { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 24px; padding: 8px 8px 0; border: 3px solid #111; }
+.donts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+header figure + figure { border: 0; }
+header .art::after { display: none; }
+.parts img { aspect-ratio: 1; padding: 8px 16px; }
+.parts figcaption { margin: 0 0 8px; text-align: center; font: bold 18px Verdana, sans-serif; }
+.donts .art { border: 3px solid #111; }
+.donts img { padding: 12px; }
+.donts figcaption { margin: 8px 0 0; }
+
+/* the picker (only on Josh's machine) */
+.pencil { position: absolute; left: 50%; top: 8px; font-size: 16px; cursor: pointer; }
+#picker-pending p { margin: 0 0 8px; padding: 6px 8px; background: #eee; }
+dialog { width: min(900px, 90vw); font: 14px Verdana, sans-serif; }
+#picker-alts { display: grid; grid-template-columns: repeat(auto-fill, 260px); gap: 12px; margin: 12px 0; }
+#picker-alts button { background: #fff; border: 2px solid #ccc; cursor: pointer; font: bold 16px Verdana, sans-serif; }
+#picker-alts button.chosen { border-color: #111; }
+#picker-alts img { display: block; width: 240px; aspect-ratio: 390 / 270; object-fit: contain; }
+#picker-text { display: block; width: 100%; box-sizing: border-box; margin-bottom: 8px; font: inherit; }
+#picker-extras { margin: 0 0 12px; display: grid; gap: 8px; }
+#picker-extras label { display: flex; align-items: center; gap: 8px; }
+#picker-extras :is(input:not([type=checkbox]), textarea) { flex: 1; font: inherit; }
+#picker-ideas { display: flex; flex-wrap: wrap; gap: 6px; }
+#picker-ideas button { font: inherit; text-align: left; cursor: pointer; }
+#picker-alts small { display: block; width: 240px; font: 11px/1.3 Verdana, sans-serif; text-align: left; }

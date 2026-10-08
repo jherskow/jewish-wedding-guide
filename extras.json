@@ -1,0 +1,94 @@
+{
+ "bedeken-licence": {
+  "caption": "The New York marriage licence is signed."
+ },
+ "bedeken-veiling": {
+  "caption": "The groom lowers the veil over the bride's face."
+ },
+ "chuppah-blessings": {
+  "caption": "Seven blessings over a cup of wine, each sung by a different guest.",
+  "repeat": "7"
+ },
+ "chuppah-circling": {
+  "caption": "She circles him three times, he circles her three times, then once together."
+ },
+ "chuppah-glass": {
+  "bubble": "",
+  "caption": "A glass is broken. Everyone shouts 'mazel tov'."
+ },
+ "chuppah-ketubah": {
+  "caption": "The ketubah is read aloud and handed over."
+ },
+ "chuppah-rings": {
+  "caption": "The rings go on the index finger, not the ring finger, during the ceremony: all witnesses must plainly see it go on."
+ },
+ "dont-phone-ringing": {
+  "caption": "Phones on silent.",
+  "cross": ""
+ },
+ "dont-phones-up": {
+  "caption": "Phones down during the ceremony.",
+  "cross": ""
+ },
+ "hora-band": {
+  "caption": "The divider comes down and everyone dances together.",
+  "hourglass": "10 min"
+ },
+ "hora-mechitza": {
+  "caption": "Two circles: men on one side, women on the other.",
+  "hourglass": "10 min"
+ },
+ "hora-performance": {
+  "caption": "Guests entertain the couple: juggling, cartwheels, whatever they can do."
+ },
+ "hora-shtick": {
+  "caption": "The couple are lifted on chairs.",
+  "hourglass": "10 min"
+ },
+ "kabalat-panim": {
+  "caption": "Food and drinks while everyone arrives."
+ },
+ "part-bride": {
+  "caption": "1×"
+ },
+ "part-chuppah": {
+  "caption": "1×"
+ },
+ "part-cup": {
+  "caption": "1×"
+ },
+ "part-glass": {
+  "caption": "1×"
+ },
+ "part-groom": {
+  "caption": "1×"
+ },
+ "part-ketubah": {
+  "caption": "1×"
+ },
+ "part-rings": {
+  "caption": "2×"
+ },
+ "rikudim-crowd": {
+  "caption": "Everyone dances."
+ },
+ "rikudim-dessert": {
+  "caption": "Dessert is out."
+ },
+ "rikudim-dj": {
+  "caption": "The second set: songs you already know.",
+  "hourglass": ""
+ },
+ "seuda": {
+  "caption": "Find your table. Dinner comes in courses."
+ },
+ "tisch-ketubah": {
+  "caption": "The ketubah, the marriage contract, is signed by two witnesses."
+ },
+ "tisch-singing": {
+  "caption": "The groom's table: singing, toasts, a few words of Torah."
+ },
+ "yichud": {
+  "caption": "The couple spend a few minutes alone."
+ }
+}

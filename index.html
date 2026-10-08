@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MORENIVÖCHIM — Guide to the Perplexed</title>
+<meta name="description" content="A first-timer's manual to a Jewish wedding.">
+<meta property="og:title" content="MORENIVÖCHIM — Guide to the Perplexed">
+<meta property="og:description" content="A first-timer's manual to a Jewish wedding.">
+<!-- Jost stands in for Futura on phones that do not have it (Android) -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:ital@0;1&display=swap">
+<link rel="stylesheet" href="style.css">
+
+<!-- All the words are here. Each <figure data-panel="id"> shows the chosen
+     drawing from panels/id/ (see choices.json).
+
+     Each panel's own title, subtitle and icons (hourglass, repeat arrow,
+     speech bubble) are in extras.json, edited with the pencil on the page;
+     ideas.json holds the subtitle suggestions the pencil offers. Their size
+     and position are in style.css under "panel extras". -->
+<main>
+  <header>
+    <h1>MORENIVÖCHIM</h1>
+    <em>Guide to the Perplexed</em>
+    <p>A first-timer's manual to a Jewish wedding</p>
+    <p class="number">07.08.5787 / 18.10.2026</p>
+    <!-- the cover: a parts list (each count is that part's subtitle) and the do-nots -->
+    <div class="parts">
+      <figure data-panel="part-groom"></figure>
+      <figure data-panel="part-bride"></figure>
+      <figure data-panel="part-rings"></figure>
+      <figure data-panel="part-chuppah"></figure>
+      <figure data-panel="part-cup"></figure>
+      <figure data-panel="part-glass"></figure>
+      <figure data-panel="part-ketubah"></figure>
+    </div>
+    <div class="donts">
+      <figure data-panel="dont-phones-up"></figure>
+      <figure data-panel="dont-phone-ringing"></figure>
+    </div>
+  </header>
+
+  <section>
+    <h2>KABALAT PÅNIM <time>3:00</time></h2>
+    <em>receiving faces</em>
+    <figure data-panel="kabalat-panim"></figure>
+    <p>The reception comes first. Eat now: dinner is hours away.</p>
+  </section>
+
+  <section>
+    <h2>TÏSCH <time>3:30</time></h2>
+    <em>table</em>
+    <figure data-panel="tisch-singing"></figure>
+    <figure data-panel="tisch-ketubah"></figure>
+    <p>The groom's friends sing around him while the ketubah, the marriage contract, is signed.</p>
+  </section>
+
+  <section>
+    <h2>BEDËKEN <time>4:15</time></h2>
+    <em>covering</em>
+    <figure data-panel="bedeken-veiling"></figure>
+    <figure data-panel="bedeken-licence"></figure>
+    <p>As in 'deck the halls'. The groom veils the bride. The New York licence is signed here.</p>
+  </section>
+
+  <section>
+    <h2>CHÜPPAH <time>4:30</time></h2>
+    <em>canopy</em>
+    <figure data-panel="chuppah-circling"></figure>
+    <figure data-panel="chuppah-rings"></figure>
+    <figure data-panel="chuppah-ketubah"></figure>
+    <figure data-panel="chuppah-blessings"></figure>
+    <figure data-panel="chuppah-glass"></figure>
+    <p>The canopy stands for the couple's home. When the glass breaks, shout 'mazel tov'.</p>
+  </section>
+
+  <section>
+    <h2>YICHÜD</h2>
+    <em>seclusion</em>
+    <figure data-panel="yichud"></figure>
+    <p>The couple's first minutes alone. Guests go to dinner.</p>
+  </section>
+
+  <section>
+    <h2>SEÜDATSIMCHA</h2>
+    <em>a joyful meal</em>
+    <figure data-panel="seuda"></figure>
+    <p>Courses alternate with dancing. Get up when the music starts.</p>
+  </section>
+
+  <section>
+    <h2>HÖRA</h2>
+    <em>circle dance</em>
+    <figure data-panel="hora-mechitza"></figure>
+    <figure data-panel="hora-shtick"></figure>
+    <figure data-panel="hora-performance"></figure>
+    <figure data-panel="hora-band"></figure>
+    <p>No steps to learn. It starts with men and women on either side of a divider, the mechitza, then the floor is mixed.</p>
+  </section>
+
+  <section>
+    <h2>RIKÜDIM</h2>
+    <em>dancing</em>
+    <figure data-panel="rikudim-dj"></figure>
+    <figure data-panel="rikudim-crowd"></figure>
+    <figure data-panel="rikudim-dessert"></figure>
+    <p>The second set is the classics: an ordinary American party mix. Dessert is out.</p>
+  </section>
+</main>
+
+<dialog id="picker">
+  <form method="dialog"><button>Close</button> <b id="picker-name"></b></form>
+  <div id="picker-alts"></div>
+  <fieldset id="picker-extras">
+    <legend>Words and icons on this panel (saved as you go)</legend>
+    <label>Title <input data-key="title" placeholder="above the drawing; empty for none"></label>
+    <label>Subtitle <textarea data-key="caption" rows="2" placeholder="under the drawing; empty for none"></textarea></label>
+    <div id="picker-ideas"></div>
+    <label><input type="checkbox" data-key="hourglass"> <i class="hourglass"></i> <input data-key="hourglass" data-icon placeholder="20 min; empty for just the hourglass"></label>
+    <label><input type="checkbox" data-key="repeat"> <i class="repeat"></i> <input data-key="repeat" data-icon placeholder="7; empty for just the arrow"></label>
+    <label><input type="checkbox" data-key="bubble"> <i class="bubble"></i> <input data-key="bubble" data-icon placeholder="mazel tov; empty for an empty bubble"></label>
+    <label><input type="checkbox" data-key="cross"> <i class="cross"></i> crossed out: do not do this</label>
+  </fieldset>
+  <div id="picker-pending"></div>
+  <textarea id="picker-text" rows="3" placeholder="Ask for a new drawing of this panel: what should change?"></textarea>
+  <button id="picker-ask">Save request</button> <span id="picker-saved"></span>
+</dialog>
+
+<script type="module">
+  const choices = await (await fetch('choices.json', { cache: 'no-store' })).json();
+  const src = (panel, alt) => `panels/${panel}/${alt}.svg`;
+  const extras = await (await fetch('extras.json', { cache: 'no-store' })).json();
+  const el = (tag, props) => Object.assign(document.createElement(tag), props);
+  // Puts a panel's title, icons and subtitle on the page as extras.json has them.
+  const render = fig => {
+    const x = extras[fig.dataset.panel] ?? {};
+    fig.querySelectorAll('h3, figcaption, .art i').forEach(e => e.remove());
+    if (x.title) fig.prepend(el('h3', { textContent: x.title }));
+    for (const icon of ['hourglass', 'repeat', 'bubble', 'cross'])
+      if (icon in x) fig.querySelector('.art').append(el('i', { className: icon, textContent: x[icon] }));
+    if (x.caption) fig.append(el('figcaption', { textContent: x.caption }));
+    fig.querySelector('img').alt = x.caption ?? '';  // screen readers get the subtitle
+  };
+  for (const fig of document.querySelectorAll('figure[data-panel]')) {
+    if (!choices[fig.dataset.panel]) { fig.hidden = true; continue; }  // no drawing yet
+    // The drawing and its icons share a box, so a title or subtitle never moves the icons.
+    const art = fig.appendChild(el('div', { className: 'art' }));
+    art.append(el('img', { alt: '', src: src(fig.dataset.panel, choices[fig.dataset.panel]) }));
+    render(fig);
+  }
+
+  // The pencils only exist on Josh's machine, on the live page (not in v/NN snapshots).
+  if (location.hostname === 'localhost' && !location.pathname.startsWith('/v/')) {
+    const panels = await (await fetch('/api/panels')).json();
+    const post = (path, body) => fetch(path, { method: 'POST', body: JSON.stringify(body) });
+    const $ = id => document.getElementById(id);
+    const ideas = await (await fetch('ideas.json', { cache: 'no-store' })).json();
+    const fields = [...$('picker-extras').querySelectorAll('[data-key]')];
+    let current;
+    // The form is the truth while the picker is open: read it, redraw the panel, and save.
+    const readExtras = () => {
+      const x = {};
+      for (const f of fields) {
+        const key = f.dataset.key, text = f.value.trim();
+        if (f.type === 'checkbox') { if (f.checked) x[key] = ''; }
+        else if ('icon' in f.dataset ? key in x : text) x[key] = text;
+      }
+      extras[current.dataset.panel] = x;
+      render(current);
+    };
+    // one save at a time, in order, so a quick second edit cannot be overwritten by the first
+    let saving = Promise.resolve();
+    const saveExtras = () => {
+      const panel = current.dataset.panel;
+      saving = saving.then(() => post('/api/extras', { panel, extras: extras[panel] }));
+    };
+    $('picker-extras').oninput = e => {
+      // typing words for an icon switches the icon on
+      if ('icon' in e.target.dataset && e.target.value) e.target.parentElement.querySelector('[type=checkbox]').checked = true;
+      readExtras();
+    };
+    $('picker-extras').onchange = saveExtras;
+    // Requests Josh has left that have not been drawn yet, by panel.
+    const pending = {};
+    const waiting = await fetch('requests.txt', { cache: 'no-store' });
+    if (waiting.ok) for (const line of (await waiting.text()).split('\n')) {
+      const i = line.indexOf(': ');
+      if (i > 0) (pending[line.slice(0, i)] ??= []).push(line.slice(i + 2));
+    }
+    const showPending = fig => {
+      const list = pending[fig.dataset.panel] ?? [];
+      fig.querySelector('.pencil').textContent = list.length ? `✎ ${list.length} waiting` : '✎';
+      if (fig === current) $('picker-pending').replaceChildren(...list.map(t =>
+        Object.assign(document.createElement('p'), { textContent: `Waiting to be drawn: ${t}` })));
+    };
+    for (const fig of document.querySelectorAll('figure[data-panel]:not([hidden])')) {
+      const pencil = fig.appendChild(document.createElement('button'));
+      pencil.className = 'pencil';
+      pencil.textContent = '✎';
+      pencil.title = 'Choose another drawing';
+      showPending(fig);
+      pencil.onclick = () => {
+        current = fig;
+        const panel = fig.dataset.panel;
+        $('picker-name').textContent = panel;
+        $('picker-saved').textContent = '';
+        $('picker-text').value = '';
+        showPending(fig);
+        const x = extras[panel] ?? {};
+        for (const f of fields)
+          if (f.type === 'checkbox') f.checked = f.dataset.key in x; else f.value = x[f.dataset.key] ?? '';
+        $('picker-ideas').replaceChildren(...(ideas[panel] ?? []).map(text => {
+          const b = el('button', { type: 'button', textContent: text });
+          b.onclick = () => { $('picker-extras').querySelector('textarea').value = text; readExtras(); saveExtras(); };
+          return b;
+        }));
+        $('picker-alts').replaceChildren(...panels[panel].map(alt => {
+          const b = document.createElement('button');
+          b.className = alt === choices[panel] ? 'chosen' : '';
+          b.append(Object.assign(new Image(), { src: src(panel, alt), alt: '' }), alt);
+          // what this drawing is, from the <desc> saved inside it
+          const note = b.appendChild(el('small'));
+          fetch(src(panel, alt)).then(r => r.text()).then(svg => {
+            const desc = svg.match(/<desc>.*?<\/desc>/s);
+            if (desc) note.textContent = new DOMParser().parseFromString(desc[0], 'text/xml').documentElement.textContent;
+          });
+          b.onclick = async () => {
+            await post('/api/choose', { panel, alt });
+            choices[panel] = alt;
+            fig.querySelector('img').src = src(panel, alt);
+            $('picker').close();
+          };
+          return b;
+        }));
+        $('picker').showModal();
+      };
+    }
+    $('picker-ask').onclick = async () => {
+      if (!$('picker-text').value.trim()) return;
+      const r = await post('/api/request', { panel: current.dataset.panel, text: $('picker-text').value });
+      if (!r.ok) { $('picker-saved').textContent = 'NOT saved: the server refused it.'; return; }
+      (pending[current.dataset.panel] ??= []).push($('picker-text').value.trim());
+      showPending(current);
+      $('picker-saved').textContent = 'Saved. Claude sees it when you next message him.';
+      $('picker-text').value = '';
+    };
+  }
+</script>
+</html>
