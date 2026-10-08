@@ -66,8 +66,17 @@
  "part-ketubah": {
   "caption": "1×"
  },
+ "part-kippah": {
+  "caption": "1×"
+ },
  "part-rings": {
   "caption": "2×"
+ },
+ "part-shoes": {
+  "caption": "2×"
+ },
+ "part-tissues": {
+  "caption": "1×"
  },
  "rikudim-crowd": {
   "caption": "Everyone dances."

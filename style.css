@@ -7,7 +7,8 @@ h1 { margin: 0; font-size: 34px; line-height: 1.1; }
 header p { margin: 4px 0 0; }
 /* the translations under the names: Futura italic (Josh, 2026-10-08) */
 header em, section > em { display: block; font: italic 19px/1.3 Futura, Jost, sans-serif; }
-header .number { margin-top: 12px; font-weight: bold; }
+header .number, header .label { margin-top: 12px; font-weight: bold; }
+header .label { margin-top: 20px; }
 
 section { padding: 24px 0; border-bottom: 2px solid #111; counter-reset: step; }
 h2 { margin: 0 16px 2px; font-size: 28px; line-height: 1.1; display: flex; justify-content: space-between; align-items: baseline; }
@@ -45,7 +46,7 @@ figcaption { margin: 0 32px 12px; }
 .art::after { content: ''; position: absolute; inset: 28px 32px; border: 3px solid #111; pointer-events: none; }
 
 /* the cover: a boxed parts list, then the do-nots side by side */
-.parts { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 24px; padding: 8px 8px 0; border: 3px solid #111; }
+.parts { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 6px; padding: 8px 8px 0; border: 3px solid #111; }
 .donts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
 header figure + figure { border: 0; }
 header .art::after { display: none; }
