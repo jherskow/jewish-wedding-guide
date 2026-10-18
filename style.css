@@ -36,7 +36,7 @@ section:has(figure ~ figure) figure::before { content: counter(step); position: 
 .bubble { min-width: 96px; min-height: 30px; padding: 6px 12px; display: grid; place-items: center; border: 3px solid #111; border-radius: 18px; }
 .bubble::after { content: ''; position: absolute; left: 22px; bottom: -11px; width: 14px; height: 14px; background: #fff; border: solid #111; border-width: 0 3px 3px 0; transform: skewX(25deg) rotate(45deg); }
 .cross { width: 40px; height: 40px; background: no-repeat center / 100% 100%;
-  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M4 4L96 96M96 4L4 96" stroke="%23111" stroke-width="7" vector-effect="non-scaling-stroke"/></svg>'); }
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M4 4L96 96M96 4L4 96" stroke="%239a3b34" stroke-width="11" vector-effect="non-scaling-stroke"/></svg>'); }
 figure i { position: absolute; z-index: 1; }
 figure .cross { inset: 12px; width: auto; height: auto; }
 figure .hourglass { left: 44px; bottom: 12px; width: max-content; border: solid #fff; border-width: 0 6px; }
@@ -50,7 +50,7 @@ figure::after { content: ''; position: absolute; inset: 28px 32px; border: 3px s
 header figure::after { display: none; }
 .parts img { aspect-ratio: 1; padding: 8px 16px; }
 .parts figcaption { margin: 0 0 8px; text-align: center; font: bold 18px Verdana, sans-serif; }
-.donts { margin-top: 6px; }
+.donts { margin-top: 20px; }
 .donts figure { border: 3px solid #111; }
 .donts img { padding: 12px; }
 .donts p { margin: 8px 0 0; }
@@ -65,3 +65,22 @@ dialog { width: min(900px, 90vw); font: 14px Verdana, sans-serif; }
 #picker-alts img { display: block; width: 240px; aspect-ratio: 390 / 270; object-fit: contain; }
 #picker-text { display: block; width: 100%; box-sizing: border-box; margin-bottom: 8px; font: inherit; }
 #picker-alts small { display: block; width: 240px; font: 11px/1.3 Verdana, sans-serif; text-align: left; }
+
+/* Hebrew vowel points on the titles (from niqqud.html): <b class="MARK">A</b> */
+  h1 b, h2 b { position: relative; font-weight: inherit; }
+  h1 b::after, h2 b::after { content: ''; position: absolute; left: 50%; width: .42em; height: .42em; transform: translateX(-50%); background: center / contain no-repeat; }
+  /* below the letter */
+  .patach::after, .kamatz::after, .chirik::after, .tzere::after, .segol::after, .shva::after, .kubutz::after { bottom: -.38em; }
+  /* inside the letter (dagesh, shuruk) and above it (cholam, sin dot) */
+  .dot::after { top: 50%; transform: translate(-50%, -50%) !important; width: .16em !important; height: .16em !important; background: #111 !important; }
+  .cholam::after { top: -.1em; left: 15% !important; width: .16em !important; height: .16em !important; background: #111 !important; }
+  .sin::before { content: ''; position: absolute; top: -.1em; left: 85% !important; width: .16em !important; height: .16em !important; background: #111 !important; }
+  .patach::after { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><rect x="0" y="1" width="10" height="3.2" fill="%23111"/></svg>'); }
+  .kamatz::after { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><rect x="0" y="1" width="10" height="3.2" fill="%23111"/><rect x="3.4" y="1" width="3.2" height="8" fill="%23111"/></svg>'); }
+  .chirik::after { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><rect x="3.4" y="1" width="3.2" height="3.2" fill="%23111"/></svg>'); }
+  .tzere::after { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><rect x="0" y="1" width="3.2" height="3.2" fill="%23111"/><rect x="6.8" y="1" width="3.2" height="3.2" fill="%23111"/></svg>'); }
+  .segol::after { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><rect x="0" y="1" width="3.2" height="3.2" fill="%23111"/><rect x="6.8" y="1" width="3.2" height="3.2" fill="%23111"/><rect x="3.4" y="6" width="3.2" height="3.2" fill="%23111"/></svg>'); }
+  .shva::after { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><rect x="3.4" y="0" width="3.2" height="3.2" fill="%23111"/><rect x="3.4" y="5.6" width="3.2" height="3.2" fill="%23111"/></svg>'); }
+  .kubutz::after { width: .56em !important; height: .56em !important; bottom: -.44em !important; background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><rect x="0" y="0" width="2.6" height="2.6" fill="%23111"/><rect x="3.7" y="3.7" width="2.6" height="2.6" fill="%23111"/><rect x="7.4" y="7.4" width="2.6" height="2.6" fill="%23111"/></svg>'); }
+h1, h2 { padding-bottom: .35em; } /* room for the marks under the letters */
+footer { padding: 32px 16px 48px; text-align: center; font: bold 18px/1.4 Futura, Jost, sans-serif; }
